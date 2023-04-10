@@ -10,4 +10,9 @@ export class InputComponent {
   @Input() label: string;
   @Input() control: FormControl;
 
+  showErrors() {
+    const { dirty, touched, errors } = this.control;
+    // return true only if below logic happen
+    return dirty && touched && errors;
+  }
 }
