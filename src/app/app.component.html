@@ -4,7 +4,7 @@
 
     <div class="right menu">
       <!-- <ng-container> tag doesn't create node inside DOM like div does -->
-      <ng-container *ngIf="signedin">
+      <ng-container *ngIf="signedin$ | async">
         <a class="ui item" routerLink="/inbox" routerLinkActive="active">
           Inbox
         </a>
@@ -12,8 +12,13 @@
           Sign Out
         </a>
       </ng-container>
-      <ng-container *ngIf="!signedin">
-        <a class="ui item" routerLink="/" routerLinkActive="active">
+      <ng-container *ngIf="!(signedin$ | async)">
+        <a
+          class="ui item"
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="active"
+        >
           Sign In
         </a>
         <a class="ui item" routerLink="/signup" routerLinkActive="active">
