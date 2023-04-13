@@ -18,7 +18,12 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     // we are going to run to make the request
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(req);
-    return next.handle(req);
+    // req obj is readonly co it cannot be,
+    // modified directly
+    const modifiedReq = req.clone({
+      withCredentials: true
+    });
+
+    return next.handle(modifiedReq);
   }
 }
