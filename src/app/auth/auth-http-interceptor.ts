@@ -3,9 +3,10 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest
+  HttpRequest,
+  HttpEventType
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, filter, tap } from 'rxjs';
 
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
@@ -20,10 +21,18 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // req obj is readonly co it cannot be,
     // modified directly
+
+    // modify or log the outgoing request
     const modifiedReq = req.clone({
       withCredentials: true
     });
 
-    return next.handle(modifiedReq);
+    return next.handle(modifiedReq).pipe(
+      filter(val => val.type === HttpEventType.Sent),
+
+      tap(val => {
+        console.log('Sent the request');
+      })
+    );
   }
 }
