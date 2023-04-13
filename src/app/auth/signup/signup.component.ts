@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
           // then async validator can start running
           [
             Validators.required,
-            Validators.minLength(3),
+            Validators.minLength(4),
             Validators.maxLength(20),
             // alpha numeric characters only
             Validators.pattern(/^[a-z0-9]+$/)
