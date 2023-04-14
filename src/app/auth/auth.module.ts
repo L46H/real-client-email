@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { SignoutComponent } from './signout/signout.component';
+import { InboxModule } from '../inbox/inbox.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SignoutComponent } from './signout/signout.component';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    InboxModule
   ],
   exports: [
     SignupComponent
