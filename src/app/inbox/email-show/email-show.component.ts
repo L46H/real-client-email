@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmailService } from '../email.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-email-show',
@@ -17,12 +18,14 @@ export class EmailShowComponent implements OnInit {
     // We chained onto this params
     // the params property is a behavior subject that is going to
     // emit values any time the url changes
-    this.route.params.subscribe(({ id }) => {
-      // returns observable itself so it's needed
-      // to nest subscribe
-      this.emailService.getEmail(id).subscribe(email => {
+    this.route.params
+      .pipe(
+        switchMap(({ id }) => {
+          return this.emailService.getEmail(id);
+        })
+      )
+      .subscribe(email => {
         console.log(email);
       });
-    });
   }
 }
