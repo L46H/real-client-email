@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      // we refer to that ':id' as a parameter it is key value of obj
+      // we refer to that ':id' as url parameter it is key value of obj
       // basically it is extracting some part of the url
       { path: ':id', component: EmailShowComponent },
       {
