@@ -15,20 +15,24 @@ export class EmailShowComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private emailService: EmailService
-  ) {}
+  ) {
+    this.route.data.subscribe(data => {
+      console.log(data);
+    });
+  }
 
   ngOnInit(): void {
     // We chained onto this params
     // the params property is a behavior subject that is going to
     // emit values any time the url changes
-    this.route.params
-      .pipe(
-        switchMap(({ id }) => {
-          return this.emailService.getEmail(id);
-        })
-      )
-      .subscribe(email => {
-        this.email = email;
-      });
+    // this.route.params
+    //   .pipe(
+    //     switchMap(({ id }) => {
+    //       return this.emailService.getEmail(id);
+    //     })
+    //   )
+    //   .subscribe(email => {
+    //     this.email = email;
+    //   });
   }
 }
