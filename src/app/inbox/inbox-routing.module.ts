@@ -4,12 +4,17 @@ import { HomeComponent } from './home/home.component';
 import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { EmailShowComponent } from './email-show/email-show.component';
 import { EmailResolverService } from './email-resolver.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: 'not-found',
+        component: NotFoundComponent
+      },
       // we refer to that ':id' as url parameter it is key value of obj
       // basically it is extracting some part of the url
       {
