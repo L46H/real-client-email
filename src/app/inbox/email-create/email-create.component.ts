@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Email } from '../email';
 
 @Component({
   selector: 'app-email-create',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class EmailCreateComponent {
   showModal = false;
+  email: Email;
+
+  constructor() {
+    this.email = {
+      id: '',
+      to: '',
+      subject: '',
+      html: '',
+      text: '',
+      from: 'kier0@angular-email.com'
+    }
+  }
 }
