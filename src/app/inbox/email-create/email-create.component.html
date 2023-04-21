@@ -4,5 +4,7 @@
 
 <app-modal (dismiss)="showModal = false" *ngIf="showModal">
   <div modalTitle>Compose</div>
-  <app-email-form [email]="email"></app-email-form>
+  <!-- emitting a value along with this event -->
+  <!-- so we need to capture that event and pass it into this onSubmit method -->
+  <app-email-form (emailSubmit)="onSubmit($event)" [email]="email"></app-email-form>
 </app-modal>
