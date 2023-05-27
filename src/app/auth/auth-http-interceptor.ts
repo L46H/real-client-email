@@ -27,7 +27,24 @@ export class AuthHttpInterceptor implements HttpInterceptor {
       withCredentials: true
     });
 
+    // other uses of Interceptors
+
+    // when we call next.handle we get back an observable
     return next.handle(modifiedReq)
+    // .pipe(
+    //   tap(val => {
+    //     if (val.type === HttpEventType.Sent) {
+    //       console.log('Request was sent to server');
+    //     }
+
+    //     if (val.type === HttpEventType.Response) {
+    //       console.log('Got a response from the API', val);
+    //     }
+    //   })
+    // )
+
+
+
     // .pipe(
     //   filter(val => val.type === HttpEventType.Sent),
 
@@ -37,3 +54,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     //);
   }
 }
+
+// over all, the interceptor is not just about intercepting and modifying the request
+// We can also use it to take a look at the information that is coming back as well.
+// that information which is comming back will be emitted by OBSERVABLE

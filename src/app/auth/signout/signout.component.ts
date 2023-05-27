@@ -8,6 +8,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './signout.component.html',
   styleUrls: ['./signout.component.css']
 })
+
 export class SignoutComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
